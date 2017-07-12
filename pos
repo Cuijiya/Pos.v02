@@ -1,0 +1,44 @@
+#1计算商品数量(15min)
+input barcodearr: [String]
+
+output newbarcodearr: [
+{“barcode”, “count”},
+ …
+]
+
+#2找到商品信息（15min）
+input
+newbarcodearr: [
+{“barcode”, “count”},
+ …
+]
+
+foodinfor: [
+{barcode: ..., name: ..., unit: ..., price: …},
+…
+]
+
+output foodlist: [
+{barcode: ..., name: ..., unit: ..., price: ..., count: ...},
+…
+]
+
+#3计算每类商品价格(5min)
+input foodlist:[
+{barcode: ..., name: ..., unit: ..., price: ..., count: ...},
+…
+]   //根据price和count计算subtotal
+
+output subtotal:[subtotal: …]
+
+#4计算总价(5min)
+input subtotal:[subtotal: ...]
+output total: number
+
+#5合并信息并打印(5min)
+input
+foodlist: [Object]
+subtotal:[Object]
+total: number
+
+output finallist: print
