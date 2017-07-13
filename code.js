@@ -10,6 +10,14 @@ var barcodearr =[
     'ITEM000004'
 ]
 
+/*#1计算商品数量(15min)
+input barcodearr: [String]
+
+output newbarcodearr: [
+{“barcode”, “count”},
+ …
+]*/
+
 function getCount(barcodearr) {
     var newbarcodearr=[],index=0;
     for ( var i=0;i<barcodearr.length;) {
@@ -25,7 +33,24 @@ function getCount(barcodearr) {
         i+=count;
     }
 return newbarcodearr;
-    };
+};
+
+/*#2找到商品信息（15min）
+input
+newbarcodearr: [
+{“barcode”, “count”},
+ …
+]
+
+foodinfor: [
+{barcode: ..., name: ..., unit: ..., price: …},
+…
+]
+
+output foodlist: [
+{barcode: ..., name: ..., unit: ..., price: ..., count: ...},
+…
+]*/
 
 function getFoodList(newbarcodearr) {
 var foodList=[];
@@ -38,7 +63,16 @@ var foodList=[];
         }
     }
     return foodList
-    };
+};
+
+/*#3计算每类商品价格(5min)
+input foodlist:[
+{barcode: ..., name: ..., unit: ..., price: ..., count: ...},
+…
+]        //根据price和count计算subtotal
+
+output subtotal:[subtotal: …]*/
+
 function getSubtotal(arr) {
     var subtotal, newArr = arr.slice();
     for (var i=0;i<arr.length;i++) {
@@ -47,7 +81,11 @@ function getSubtotal(arr) {
     }
     return newArr
 
-}
+};
+
+/*#4计算总价(5min)
+input subtotal:[subtotal: ...]
+output total: number*/
 
 function getTotal(arr) {
     var total=0;
@@ -55,14 +93,23 @@ function getTotal(arr) {
         total+=arr[i].subtotal
     }
     return total
-}
+};
+
+/*#5合并信息并打印(5min)
+input
+foodlist: [Object]
+subtotal:[Object]
+total: number
+
+output finallist: print*/
+
 function print(out,total) {
     console.log('***<没钱赚商店>收据***');
     for (i=0;i<out.length;i++) {
         console.log(`名称：${out[i].name}，数量：${out[i].count}${out[i].unit}，单价：${out[i].price}(元)，小计：${out[i].subtotal.toFixed(2)}(元)`);
     }
     console.log(`----------------------\n总计：${total.toFixed(2)}(元) \n**********************`);
-}
+};
 
 var foodInfo =[{
     barcode: 'ITEM000000',
